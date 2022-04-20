@@ -10,4 +10,9 @@ public class HelloSpringApplication {
 		SpringApplication.run(HelloSpringApplication.class, args);
 	}
 
+
+
 }
+
+
+
