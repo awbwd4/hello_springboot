@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
@@ -26,5 +27,31 @@ public class HelloController {
         return "hello-template";
     }
 
+    @GetMapping("hello-string")
+    @ResponseBody //http 응답 body부의 내용을 내가 직접 넣어주겠다는 뜻
+    public String helloString(@RequestParam("name") String name){
+        return "hello "+name; //"hello spring"
+    }
+    //body부에 직접 값을 넣어주는 경우, view를 찾고말고 없이 이 값을 그대로 브라우저로 전달한다.
+    //실제 소스코드를 보면 html 태그 같은거 없음.
 
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam("name") String name){
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+    //객체를 반환 + responsebody인 경우 spring 기본은 json반환이다.
+
+
+    static class Hello{
+        private String name;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }
