@@ -2,10 +2,11 @@ package service;
 
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.service.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import repository.MemoryMemberRepository;
+import hello.hellospring.repository.MemoryMemberRepository;
 
 
 class MemberServiceTest {

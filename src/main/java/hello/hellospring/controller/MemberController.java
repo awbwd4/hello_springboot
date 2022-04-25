@@ -1,8 +1,8 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import service.MemberService;
 
 @Controller
 public class MemberController {
@@ -21,8 +21,9 @@ public class MemberController {
     // @Controller, @Service, @Repository등으로 된 객체들은 자동으로 스프링 빈으로 등록이 되며
     // 각각의 객체들의 생성자에 @autowired가 있으면 이 객체들을 연결해준다.
     // 따라서 MemberService 객체 스프링이 관리하는 빈이므로
+
     // MemberController가 생성될 시에 스프링이 알아서 MemberService를 찾아주어서 컨트롤러에 주입해준다
-    @Autowired
+    @Autowired // 그냥 자바 객체인 memberService가 아니라 스프링 빈으로 등록이 된 memberService를 주입시켜준다.
     public MemberController(MemberService memberService) {
         //Controller 생성자를 생성할때 memberservice객체도 같이 생성한다
         this.memberService = memberService;
