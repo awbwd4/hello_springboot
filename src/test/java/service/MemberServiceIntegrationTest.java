@@ -1,6 +1,7 @@
 package service;
 
 
+import hello.hellospring.HelloSpringApplication;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.service.MemberService;
@@ -8,10 +9,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-@Transactional
+@Transactional //db 데이터를 테스트 직후에 롤백해줌
+@ContextConfiguration(classes = HelloSpringApplication.class)
 class MemberServiceIntegrationTest {
 
     @Autowired MemberService memberService;

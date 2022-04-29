@@ -7,16 +7,18 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.transaction.annotation.Transactional;
 
-
+@Transactional
 class MemberServiceTest {
 
-//    MemberService memberService = new MemberService(new MemoryMemberRepository());
     MemberService memberService;
+    MemoryMemberRepository memberRepository;
 
     @BeforeEach //동작 하기 전에
     public void afterEach(){
-        memberService = new MemberService(new MemoryMemberRepository());
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
         //MemberService 입장에서는 MemoryMemberRepository() 객체를 외부에서 넣어준것
         // Dependency Injection!
     }
