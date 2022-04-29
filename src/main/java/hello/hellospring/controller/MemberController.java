@@ -33,6 +33,7 @@ public class MemberController {
     public MemberController(MemberService memberService) {
         //Controller 생성자를 생성할때 memberservice객체도 같이 생성한다
         this.memberService = memberService;
+        System.out.println("memberService : "+memberService.getClass());
     }
 
     @GetMapping("/members/new")
